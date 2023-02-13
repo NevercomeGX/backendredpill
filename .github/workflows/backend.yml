@@ -28,7 +28,6 @@ jobs:
       - name: Stop PM2
         run: npm run stop-pm2
       - run: npm ci
-      - run: npm run build
       - name: Reloading pm2
         run: |
           echo "Reloading pm2"
