@@ -10,12 +10,7 @@ const DBPassword = process.env.DB_PASSWORD;
 // const DBPort = process.env.DB_PORT;
 const Dialect = process.env.DIALECT;
 
-export const sequelize = new Sequelize(
-	"wordpress",
-	"wordpressuser",
-	"jRR&gj8KD$T5V@aRGB9",
-	{
-		host: "195.201.225.161",
-		dialect: "mysql",
-	}
-);
+export const sequelize = new Sequelize(DBName, DBUser, DBPassword, {
+	host: DBHost,
+	dialect: Dialect,
+});
