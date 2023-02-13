@@ -19,7 +19,7 @@ export async function getProjects(req, res) {
 	}
 }
 
-function sendConfirmationEmail(transporter, email) {
+function sendConfirmationEmail(transporter, email, name) {
 	return new Promise((resolve, reject) => {
 		transporter.sendMail(
 			{
@@ -27,7 +27,25 @@ function sendConfirmationEmail(transporter, email) {
 				to: email,
 				subject: "Confirmation Email",
 				text: "Thank you for registering with us!",
-				html: "<p>Thank you for registering with us!</p>",
+				html:
+					`<div style="text-align:center ;">
+				<h1 style="">Escuela <span style="text-color: #c70039"> Red Pill</span> </h1>
+				<div style="text-align: left;">
+				<p>Hello ` +
+					name +
+					`,</p>
+				<p>Has recibido este mensaje porque te suscribiste al ABC de la Comunicacion. Confirme su suscripción para recibir nuestros correos electrónicos:</p>
+				</div>
+				<br>
+				<a href="https://alpha.drjuanlopez.com/confirmacion" style="display: inline-block; background-color: #c70039; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Confirmar suscripción</a>
+				<br>
+				<div style="text-align: left;">
+				<p>Gracias</p>
+				<a>https://drjuanlopez.com</a>
+				</div>
+				
+			  </div>
+				`,
 			},
 			(error, info) => {
 				if (error) {
@@ -55,7 +73,7 @@ export async function createProject(req, res) {
 			}
 		);
 		// Ejemplo de llamada a la función enviarCorreoConfirmacion
-		sendConfirmationEmail(transporter, email)
+		sendConfirmationEmail(transporter, email, name)
 			.then(() => {
 				console.log("Email sent to:", email);
 
