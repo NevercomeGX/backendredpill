@@ -1,4 +1,4 @@
-import { Email } from "../models/email.js";
+import { Email } from "../models/Email.js";
 import dotenv from "dotenv";
 import { transporter } from "../../config/mailer.js";
 import { endpointResponse } from "../../helper/success.js";
@@ -9,7 +9,7 @@ dotenv.config();
 export async function getProjects(req, res) {
 	try {
 		const projects = await Email.findAll({
-			atributes: ["id", "name", "priority", "description", "deliverydate"],
+			atributes: ["id", "name", "lastName", "email", "country"],
 		});
 		res.json(projects);
 	} catch (error) {
