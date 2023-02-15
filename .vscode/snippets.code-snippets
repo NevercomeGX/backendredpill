@@ -1,0 +1,9 @@
+{
+  "Endpoint": {
+    "description": "Endpoint",
+    "prefix": "ep",
+    "body": [
+      "export const ${1:name}: Handler = async (req, res) => {${0}};"
+    ]
+  }
+}

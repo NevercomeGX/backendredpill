@@ -1,0 +1,12 @@
+dist
+node_modules
+
+LICENSE
+.env
+
+openapi.json
+
+bin/atom/crud/schemas.ts
+bin/atom/crud/types.ts
+
+.vscode/snippets.code-snippets
