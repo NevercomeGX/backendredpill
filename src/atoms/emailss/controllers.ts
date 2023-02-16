@@ -30,6 +30,7 @@ export const create: Handler = async (req, res) => {
   // Create an emails
   const emails = await services.create(data);
   // Call mailservice
+
   sendConfirmationEmail(transporter, data.name, data.email, data.lastName);
 
   // Response

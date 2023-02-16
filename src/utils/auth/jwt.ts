@@ -19,13 +19,13 @@ const strategy = (tolerant: boolean) => {
       },
     });
 
-    if (user) {
-      verify(null, user);
-    } else if (tolerant) {
-      verify(null, null);
-    } else {
-      verify(null, null, "can't authenticate the user");
-    }
+    // if (user) {
+    //   verify(null, user);
+    // } else if (tolerant) {
+    //   verify(null, null);
+    // } else {
+    //   verify(null, null, "can't authenticate the user");
+    // }
   });
 };
 
