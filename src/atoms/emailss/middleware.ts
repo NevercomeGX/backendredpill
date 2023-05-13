@@ -3,7 +3,8 @@ import * as services from './services';
 import { SimpleError } from '../../utils/errors';
 
 export const getObject: Handler = async (req, res, next) => {
-  const emails = await services._getEmailsById(req.params.id);
+  const id = Number(req.params.id);
+  const emails = await services._getEmailsById(id);
 
   // Ownership validation should be here
 

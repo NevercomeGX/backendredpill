@@ -33,4 +33,6 @@ export const {
   SMTP_USERNAME,
   SMPT_PASSWORD,
   SMTP_SENDER,
+  MAILGUN_KEY,
+  MAILGUN_HOST,
 } = pe;

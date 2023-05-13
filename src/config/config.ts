@@ -1,19 +1,20 @@
 import nodemailer from 'nodemailer';
-import { EMAILPASSWORD, EMAILHOST, EMAIL } from '../utils/secrets';
+import nodemailMailgun from 'nodemailer-mailgun-transport';
+import { MAILGUN_KEY, MAILGUN_HOST } from '../utils/secrets';
+
 // create reusable transporter object using the default SMTP transport
-const transporter = nodemailer.createTransport({
-  host: EMAILHOST,
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  requireTLS: true,
+
+const auth = {
   auth: {
-    user: EMAIL, // generated ethereal user
-    pass: EMAILPASSWORD, // generated ethereal password
+    api_key: MAILGUN_KEY || '',
+    domain: MAILGUN_HOST || '',
   },
-});
+};
 
-export { transporter };
+const transport = nodemailer.createTransport(nodemailMailgun(auth));
 
-transporter.verify().then(() => {
-  console.log('ready for send emails');
-});
+export { transport };
+
+// transport.verify().then(() => {
+//   console.log('ready for send emails');
+// });
