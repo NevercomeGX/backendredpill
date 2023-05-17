@@ -4,8 +4,8 @@ import prisma from '../../prisma';
 import { getPagination } from '../../utils/helpers';
 import { PaginatedResponse } from '../../types';
 
-export function shape({ id, name, lastName, email, country }: Emails): EmailsShape {
-  return { id, name, lastName, email, country };
+export function shape({ id, firstName, lastName, email, country }: Emails): EmailsShape {
+  return { id, firstName, lastName, email, country };
 }
 
 export function shapeNullable(emails: Emails | null): EmailsShape | null {

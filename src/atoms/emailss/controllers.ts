@@ -1,8 +1,6 @@
 import type { Handler } from 'express';
 import * as schemas from './schemas';
 import * as services from './services';
-import { sendConfirmationEmail } from '../../mailservice/nodemailer';
-import { transport } from '../../config/config';
 
 export const list: Handler = async (req, res) => {
   // Validate query
@@ -27,23 +25,10 @@ export const create: Handler = async (req, res) => {
   // Validate data
   const data = schemas.create.parse(req.body);
 
-  // Check required data
-  if (!data.name || !data.email || !data.lastName || !data.country) {
-    return res.status(400).json({ message: 'Missing required data.' });
-  }
+  // Create an emails
+  const emails = await services.create(data);
 
-  try {
-    // Create an emails
-    const emails = await services.create(data);
-    // Call mailservice
-    // sendConfirmationEmail();
-
-    // Response
-    return res.status(201).json(emails);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error.' });
-  }
+  return res.status(200).json(emails);
 };
 
 export const update: Handler = async (req, res) => {

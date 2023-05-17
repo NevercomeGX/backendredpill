@@ -3,7 +3,7 @@ import * as schemas from './schemas';
 
 export interface EmailsShape {
   id: number;
-  name: string;
+  firstName: string;
   lastName: string;
   email: string;
   country: string;
