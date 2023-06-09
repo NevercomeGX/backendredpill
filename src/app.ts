@@ -19,7 +19,7 @@ const app: Application = express();
 // CORS (Cross Origin Resource Sharing)
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3005'],
     credentials: true,
   })
 );
